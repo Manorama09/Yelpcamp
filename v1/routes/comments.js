@@ -17,7 +17,7 @@ router.get("/comments/new",middleware.isLoggedIn,function(req,res){
 //Comments create
 router.post("/comments",middleware.isLoggedIn,function(req, res){
     
-    Campground.findById(req.params._id, function(err, campground){
+    Campground.findById(req.params.id, function(err, campground){
         if(err){
             console.log(err);
             res.redirect("/campgrounds");
