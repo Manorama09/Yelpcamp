@@ -15,6 +15,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "heroku": "^7.39.2",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.5",
     "parser": "^0.1.4",
