@@ -52,17 +52,6 @@ router.get("/:id", function(req,res){
     });
 });
 
-// router.post("/:id", function(req,res){
-//     Campground.findById(req.params.id).populate("comments").exec(function(err,found){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log(found);
-//         res.render("campgrounds/show",{campground:found});
-//     }
-//     });
-// });
-
 //EDIT CAMPGROUND
 router.get("/:id/edit", middleware.checkOwnership, function(req, res){	
     Campground.findById(req.params.id, function(err, foundCampground){	

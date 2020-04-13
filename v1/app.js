@@ -9,6 +9,7 @@ var passport    =require("passport");
 var local       =require("passport-local");
 var User        =require("./models/user");
 var methodOverride=require("method-override");
+var flash       =require("connect-flash");
 
 //Requiring routes
 var campgroundRoutes = require("./routes/campgrounds"),
@@ -18,8 +19,9 @@ var campgroundRoutes = require("./routes/campgrounds"),
 mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
-app.use(express.static(__dirname+"/public"));
+app.use(express.static(__dirname+"/public/"));
 app.use(methodOverride("_method"));
+app.use(flash());
 // seedDB();
 
 //PASSPORT CONFIG
@@ -38,6 +40,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req,res,next){
     res.locals.currentUser=req.user;
+    res.locals.error= req.flash("error");
+    res.locals.success =req.flash("success");
     next();
     });
 
